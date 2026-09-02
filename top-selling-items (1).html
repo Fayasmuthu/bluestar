@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Selling Items — Product Carousel</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#171512;
+  --muted:#7A756D;
+  --line:#ECE7DF;
+  --card:#FFFFFF;
+  --accent:#2C3E6B;      /* current price blue */
+  --accent-2:#C9A961;    /* gold hover/sale accent */
+  --page-bg:#FBF9F6;
+}
+*{box-sizing:border-box;}
+body{
+  font-family:'Inter',sans-serif; color:var(--ink); background:var(--page-bg); margin:0;
+}
+h1,h2,h3,.font-display{font-family:'Manrope',sans-serif; letter-spacing:-0.01em;}
+.container-xl{max-width:1240px;}
+
+/* ---- section shell ---- */
+.top-selling{padding:4rem 0 5rem;}
+.ts-head{display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1.9rem;}
+.ts-title{font-size:clamp(1.5rem,2.6vw,2.1rem); font-weight:800; margin:0;}
+.ts-view-all{
+  display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:.92rem; color:var(--ink);
+  border-bottom:1.5px solid var(--ink); padding-bottom:2px; white-space:nowrap;
+}
+.ts-view-all i{transition:transform .25s ease;}
+.ts-view-all:hover i{transform:translateX(4px);}
+
+/* ---- bootstrap carousel overrides ---- */
+.ts-carousel{position:relative; padding:0 3.2rem;}
+@media (max-width:768px){ .ts-carousel{padding:0 2.6rem;} }
+
+.ts-carousel .carousel-inner{overflow:hidden; border-radius:0;}
+.ts-carousel .carousel-item .row{--bs-gutter-x:1.25rem;}
+
+.ts-nav{
+  width:46px; height:46px; border-radius:50%; background:#fff; border:1px solid var(--line);
+  box-shadow:0 10px 26px -10px rgba(23,21,18,.28); display:flex; align-items:center; justify-content:center;
+  color:var(--ink); opacity:1; transition:.2s ease;
+}
+.ts-nav:hover{background:var(--ink); color:#fff; border-color:var(--ink);}
+.carousel-control-prev, .carousel-control-next{width:3.2rem; opacity:1;}
+@media (max-width:768px){
+  .carousel-control-prev, .carousel-control-next{width:2.6rem;}
+  .ts-nav{width:38px; height:38px;}
+}
+
+.ts-indicators{position:static; margin-top:1.4rem; gap:6px;}
+.ts-indicators [data-bs-target]{
+  width:6px; height:6px; border-radius:50%; background:var(--line); opacity:1; border:none;
+  transition:.2s ease; text-indent:0;
+}
+.ts-indicators .active{background:var(--ink); width:20px; border-radius:4px;}
+
+/* ---- product card ---- */
+.ts-card{
+  border-radius:16px; overflow:hidden; padding-bottom:1rem; height:100%;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.ts-card:hover{transform:translateY(-6px);}
+
+.ts-img-wrap{position:relative; aspect-ratio:3/4; overflow:hidden; border-radius:16px;}
+.ts-img-wrap img{
+  width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease;
+}
+.ts-card:hover .ts-img-wrap img{transform:scale(1.06);}
+
+.ts-bookmark{
+  position:absolute; top:12px; right:12px; width:38px; height:38px; border-radius:50%;
+  background:rgba(255,255,255,.9); backdrop-filter:blur(4px); border:none; display:flex; align-items:center;
+  justify-content:center; color:var(--ink); font-size:1rem; box-shadow:0 6px 16px -6px rgba(0,0,0,.3);
+  transition:.2s ease; cursor:pointer;
+}
+.ts-bookmark:hover{background:#fff;}
+.ts-bookmark.active{color:var(--accent-2);}
+
+.ts-sale-badge{
+  position:absolute; top:12px; left:12px; background:var(--ink); color:#fff; font-size:.68rem; font-weight:800;
+  letter-spacing:.04em; padding:.32rem .6rem; border-radius:999px; text-transform:uppercase;
+}
+
+.ts-quickadd{
+  position:absolute; left:10px; right:10px; bottom:10px; background:#fff; color:var(--ink); border:none;
+  border-radius:10px; padding:.62rem; font-weight:700; font-size:.85rem; display:flex; align-items:center;
+  justify-content:center; gap:8px; opacity:0; transform:translateY(10px); transition:.25s ease;
+  box-shadow:0 10px 22px -10px rgba(0,0,0,.35);
+}
+.ts-card:hover .ts-quickadd{opacity:1; transform:translateY(0);}
+
+.ts-info{padding:.95rem .2rem 0;}
+.ts-name{font-size:.95rem; font-weight:700; margin:0 0 .35rem; color:var(--ink);}
+.ts-price .now{color:var(--accent); font-weight:800; font-size:1rem;}
+.ts-price .old{color:var(--muted); text-decoration:line-through; font-size:.88rem; margin-left:.4rem;}
+
+/* light card backgrounds rotating like the reference (image well area) */
+.bg-1 .ts-img-wrap{background:#EFE7DA;}
+.bg-2 .ts-img-wrap{background:#E3E3E1;}
+.bg-3 .ts-img-wrap{background:#F2ECE2;}
+.bg-4 .ts-img-wrap{background:#E9E4DC;}
+.bg-5 .ts-img-wrap{background:#F5E2D3;}
+.bg-6 .ts-img-wrap{background:#E4E4E4;}
+.bg-dark .ts-img-wrap{background:#17140F;}
+.bg-dark .ts-sale-badge{background:var(--accent-2); color:#17140F;}
+</style>
+</head>
+<body>
+
+<section class="top-selling">
+  <div class="container container-xl">
+
+    <div class="ts-head">
+      <h2 class="ts-title">Top Selling Items</h2>
+      <a href="#" class="ts-view-all">View All <i class="bi bi-arrow-right"></i></a>
+    </div>
+
+    <div class="ts-carousel">
+      <div id="topSellingCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4500" data-bs-touch="true">
+        <div class="carousel-indicators ts-indicators" id="tsIndicators"></div>
+        <div class="carousel-inner" id="tsInner"></div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#topSellingCarousel" data-bs-slide="prev">
+          <span class="ts-nav"><i class="bi bi-chevron-left"></i></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#topSellingCarousel" data-bs-slide="next">
+          <span class="ts-nav"><i class="bi bi-chevron-right"></i></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ----- product data -----
+const products = [
+  { name:"Brown Khadi Jacket",  price:"26.69", old:"28.56", badge:"-7%",         bg:"bg-1",    img:"https://images.unsplash.com/photo-1551803091-e20673f15770?q=80&w=500&auto=format&fit=crop" },
+  { name:"White Top",           price:"19.20", old:"21.99", badge:"-7%",         bg:"bg-2",    img:"https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?q=80&w=500&auto=format&fit=crop" },
+  { name:"Blazer With Cap",     price:"34.40", old:"37.75", badge:"-9%",         bg:"bg-3",    img:"https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=500&auto=format&fit=crop" },
+  { name:"Black Dotted Shirt",  price:"26.69", old:"28.56", badge:"-6%",         bg:"bg-4",    img:"https://images.unsplash.com/photo-1495385794356-15371f348c31?q=80&w=500&auto=format&fit=crop" },
+  { name:"Long Brown Jacket",   price:"42.10", old:"47.30", badge:"-11%",        bg:"bg-5",    img:"https://images.unsplash.com/photo-1548624313-0396c75f7db4?q=80&w=500&auto=format&fit=crop" },
+  { name:"Black Dotted Jacket", price:"26.69", old:"28.56", badge:"Bestseller",  bg:"bg-dark", img:"https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?q=80&w=500&auto=format&fit=crop" },
+  { name:"Knit Sweater",        price:"23.40", old:"25.50", badge:"-8%",         bg:"bg-6",    img:"https://images.unsplash.com/photo-1554568218-0f1715e72254?q=80&w=500&auto=format&fit=crop" },
+  { name:"Denim Wrap Dress",    price:"31.85", old:"35.40", badge:"-10%",        bg:"bg-3",    img:"https://images.unsplash.com/photo-1520975954732-35dd22299614?q=80&w=500&auto=format&fit=crop" },
+];
+
+function cardHTML(p){
+  return `
+    <div class="ts-card ${p.bg}">
+      <div class="ts-img-wrap">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <span class="ts-sale-badge">${p.badge}</span>
+        <button class="ts-bookmark" onclick="toggleBookmark(this)" aria-label="Save item"><i class="bi bi-bookmark"></i></button>
+        <button class="ts-quickadd"><i class="bi bi-bag-plus"></i> Add to Bag</button>
+      </div>
+      <div class="ts-info">
+        <h6 class="ts-name">${p.name}</h6>
+        <div class="ts-price"><span class="now">$${p.price}</span><span class="old">$${p.old}</span></div>
+      </div>
+    </div>`;
+}
+
+// ----- group products into responsive slides & (re)build the carousel -----
+function itemsPerSlide(){
+  const w = window.innerWidth;
+  if(w >= 1200) return 4;
+  if(w >= 768) return 2;
+  return 1;
+}
+
+let currentPerSlide = null;
+let bsCarousel = null;
+
+function buildCarousel(){
+  const perSlide = itemsPerSlide();
+  if(perSlide === currentPerSlide) return; // no rebuild needed
+  currentPerSlide = perSlide;
+
+  const inner = document.getElementById('tsInner');
+  const indicators = document.getElementById('tsIndicators');
+  inner.innerHTML = '';
+  indicators.innerHTML = '';
+
+  const colClass = perSlide === 4 ? 'col-3' : (perSlide === 2 ? 'col-6' : 'col-12');
+  const slideCount = Math.ceil(products.length / perSlide);
+
+  for(let s = 0; s < slideCount; s++){
+    const slice = products.slice(s * perSlide, s * perSlide + perSlide);
+    const cards = slice.map(p => `<div class="${colClass}">${cardHTML(p)}</div>`).join('');
+
+    const item = document.createElement('div');
+    item.className = 'carousel-item' + (s === 0 ? ' active' : '');
+    item.innerHTML = `<div class="row g-4">${cards}</div>`;
+    inner.appendChild(item);
+
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('data-bs-target', '#topSellingCarousel');
+    dot.setAttribute('data-bs-slide-to', s);
+    if(s === 0){ dot.className = 'active'; dot.setAttribute('aria-current', 'true'); }
+    indicators.appendChild(dot);
+  }
+
+  // (re)initialize the Bootstrap carousel instance against the freshly built markup
+  const el = document.getElementById('topSellingCarousel');
+  if(bsCarousel) bsCarousel.dispose();
+  bsCarousel = new bootstrap.Carousel(el, { interval: 4500, touch: true, ride: 'carousel', autoplay: true });
+}
+
+buildCarousel();
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(buildCarousel, 200);
+});
+
+// ----- wishlist bookmark toggle -----
+function toggleBookmark(btn){
+  btn.classList.toggle('active');
+  const icon = btn.querySelector('i');
+  icon.classList.toggle('bi-bookmark');
+  icon.classList.toggle('bi-bookmark-fill');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Star Building Material Trading LLC — UAE</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0B2545;
+  --blue:#1668C4;
+  --blue-dark:#0F4E9A;
+  --sky:#EEF4FC;
+  --gold:#F2A93B;
+  --ink:#0F1B2D;
+  --muted:#5C6B80;
+  --line:#E1E8F2;
+  --card:#FFFFFF;
+  --wa:#25D366;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif; color:var(--ink); background:#fff;}
+h1,h2,h3,h4,.font-display{font-family:'Sora',sans-serif; letter-spacing:-0.01em;}
+a{text-decoration:none; color:inherit;}
+.container-xl{max-width:1240px;}
+.bg-sky{background:var(--sky);}
+.text-blue{color:var(--blue);}
+.text-muted-2{color:var(--muted);}
+
+/* star bullet */
+.star-li{display:flex; gap:.6rem; align-items:flex-start; margin-bottom:.7rem;}
+.star-li i{color:var(--gold); margin-top:.2rem;}
+
+/* eyebrow */
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px; font-size:.75rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--blue-dark);
+}
+.eyebrow i{color:var(--gold);}
+
+/* navbar */
+.navbar-bs{background:rgba(255,255,255,.96); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); padding:.7rem 0;}
+.brand-star{
+  width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--navy));
+  display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;
+}
+.navbar-bs .nav-link{font-weight:600; color:var(--ink); margin:0 .55rem; font-size:.95rem;}
+.navbar-bs .nav-link:hover{color:var(--blue);}
+.btn-primary-bs{background:var(--blue); border:none; color:#fff; font-weight:700; border-radius:8px; padding:.6rem 1.3rem; transition:.2s ease;}
+.btn-primary-bs:hover{background:var(--blue-dark); color:#fff;}
+.btn-wa{background:var(--wa); border:none; color:#fff; font-weight:700; border-radius:8px; padding:.6rem 1.3rem; transition:.2s ease;}
+.btn-wa:hover{background:#1DA851; color:#fff;}
+.btn-outline-navy{border:1.5px solid var(--navy); color:var(--navy); font-weight:700; border-radius:8px; padding:.58rem 1.3rem; background:transparent; transition:.2s ease;}
+.btn-outline-navy:hover{background:var(--navy); color:#fff;}
+
+/* hero */
+.hero{
+  background:
+    radial-gradient(circle at 15% 20%, rgba(242,169,59,.16), transparent 45%),
+    linear-gradient(180deg, var(--navy) 0%, #0E3466 60%, var(--blue-dark) 100%);
+  color:#fff; padding:5rem 0 4rem; position:relative; overflow:hidden;
+}
+.hero-canvas{
+  position:absolute; inset:0; width:100%; height:100%; display:block; z-index:0; opacity:0;
+  transition:opacity 1.2s ease;
+}
+.hero-canvas.is-ready{opacity:1;}
+.hero-overlay{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(11,37,69,.25), transparent 55%),
+    linear-gradient(180deg, rgba(9,29,56,.35) 0%, rgba(11,37,69,.55) 55%, var(--blue-dark) 100%);
+}
+.hero::before{
+  content:""; position:absolute; inset:0; opacity:.05; pointer-events:none; z-index:0;
+  background-image:
+    linear-gradient(#fff 1px, transparent 1px),
+    linear-gradient(90deg, #fff 1px, transparent 1px);
+  background-size:42px 42px;
+}
+.hero-content{position:relative; z-index:2;}
+.hero h1{font-size:clamp(1.9rem,4vw,3.1rem); font-weight:800; line-height:1.15;}
+.hero .lead-copy{color:#C9D9F0; font-size:1.05rem; max-width:600px;}
+.hero-tagline{color:var(--gold); font-weight:700; letter-spacing:.02em; margin-top:.6rem;}
+
+.cat-chip{
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:12px;
+  padding:1.1rem .9rem; text-align:center; color:#fff; transition:.25s ease; height:100%;
+}
+.cat-chip:hover{background:rgba(255,255,255,.16); transform:translateY(-4px); border-color:var(--gold);}
+.cat-chip i{font-size:1.6rem; color:var(--gold); margin-bottom:.5rem; display:block;}
+.cat-chip span{font-weight:600; font-size:.88rem;}
+
+/* section */
+.section{padding:4.6rem 0;}
+.section-title{font-size:clamp(1.6rem,3vw,2.3rem); font-weight:800; margin-top:.5rem;}
+.section-sub{color:var(--muted); max-width:640px;}
+
+/* about */
+.why-card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:1.4rem; height:100%; display:flex; gap:.9rem; align-items:flex-start;}
+.why-ico{width:42px;height:42px;border-radius:10px;background:var(--sky); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex:0 0 42px;}
+
+/* products */
+.nav-pills-bs .nav-link{
+  border-radius:999px; font-weight:700; color:var(--navy); padding:.55rem 1.2rem; border:1.5px solid var(--line); margin:0 .3rem .6rem;
+}
+.nav-pills-bs .nav-link.active{background:var(--blue); color:#fff; border-color:var(--blue);}
+.product-card{background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; height:100%; transition:.25s ease;}
+.product-card:hover{box-shadow:0 16px 34px -18px rgba(11,37,69,.3); transform:translateY(-4px);}
+.pc-img-wrap{position:relative; overflow:hidden;}
+.pc-img-wrap img{width:100%; height:170px; object-fit:cover; background:var(--sky); display:block; transition:transform .5s ease;}
+.product-card:hover .pc-img-wrap img{transform:scale(1.07);}
+.pc-wishlist{
+  position:absolute; top:10px; right:10px; width:34px; height:34px; border-radius:50%;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(4px); border:none; display:flex; align-items:center;
+  justify-content:center; color:var(--navy); font-size:.95rem; box-shadow:0 6px 14px -6px rgba(0,0,0,.3);
+  transition:.2s ease; cursor:pointer; z-index:2;
+}
+.pc-wishlist:hover{background:#fff;}
+.pc-wishlist.active{color:#E0455A;}
+.pc-quickview{
+  position:absolute; left:10px; right:10px; bottom:-42px; background:var(--navy); color:#fff; border:none;
+  border-radius:8px; padding:.5rem; font-weight:700; font-size:.78rem; display:flex; align-items:center;
+  justify-content:center; gap:6px; transition:.25s ease; cursor:pointer; z-index:2;
+}
+.product-card:hover .pc-quickview{bottom:10px;}
+.product-body{padding:1.1rem;}
+.brand-tag{display:inline-block; background:var(--sky); color:var(--blue-dark); font-size:.72rem; font-weight:700; padding:.2rem .55rem; border-radius:999px; margin-bottom:.4rem;}
+.spec-txt{color:var(--muted); font-size:.83rem; min-height:2.4em;}
+.ask-price{
+  display:inline-flex; align-items:center; gap:6px; color:var(--wa); font-weight:700; font-size:.85rem; margin-top:.6rem;
+}
+
+/* product carousel (Bootstrap) */
+.brand-carousel{position:relative; padding-bottom:2.6rem;}
+.brand-carousel .carousel-item{transition:transform .6s ease-in-out;}
+.slider-nav{
+  position:absolute; top:38%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%;
+  background:#fff; border:1.5px solid var(--line); box-shadow:0 8px 20px -8px rgba(11,37,69,.35);
+  display:flex; align-items:center; justify-content:center; z-index:5; color:var(--navy); transition:.2s ease;
+  opacity:1;
+}
+.slider-nav:hover{background:var(--blue); color:#fff; border-color:var(--blue);}
+.slider-nav.prev{left:-8px;}
+.slider-nav.next{right:-8px;}
+@media (max-width:768px){
+  .slider-nav{display:none;}
+}
+.brand-indicators{
+  position:absolute; bottom:0; left:0; right:0; margin:0; display:flex; justify-content:center; gap:6px;
+}
+.brand-indicators [data-bs-target]{
+  width:8px; height:8px; border-radius:50%; background:var(--line); opacity:1; border:none; margin:0;
+  padding:0; text-indent:-9999px; transition:.2s ease;
+}
+.brand-indicators [data-bs-target].active{background:var(--blue); width:22px; border-radius:4px;}
+
+/* brands */
+.brand-tile{
+  background:var(--card); border:1px solid var(--line); border-radius:12px; height:96px;
+  display:flex; align-items:center; justify-content:center; font-family:'Sora',sans-serif; font-weight:800;
+  color:var(--navy); font-size:1.05rem; letter-spacing:.02em; transition:.2s ease;
+}
+.brand-tile:hover{border-color:var(--gold); color:var(--blue-dark);}
+
+/* services */
+.service-card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:1.8rem; height:100%; transition:.25s ease;}
+.service-card:hover{border-color:var(--blue); box-shadow:0 16px 34px -20px rgba(11,37,69,.28);}
+.service-ico{width:52px;height:52px;border-radius:12px;background:var(--navy); color:var(--gold); display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:1rem;}
+
+/* quote form */
+.quote-wrap{background:var(--navy); border-radius:20px; overflow:hidden; color:#fff;}
+.quote-form-panel{background:#fff; color:var(--ink); padding:2.4rem;}
+.form-control-bs, .form-select-bs{border:1.5px solid var(--line); border-radius:8px; padding:.7rem .9rem;}
+.form-control-bs:focus, .form-select-bs:focus{border-color:var(--blue); box-shadow:0 0 0 3px rgba(22,104,196,.15);}
+
+/* our advantages (radial) */
+.adv-section{overflow:hidden;}
+.adv-desktop{
+  display:grid; grid-template-columns:1fr auto 1fr; grid-template-areas:"l1 ring r1" "l2 ring r2" "l3 ring r3";
+  gap:0 2.6rem; max-width:920px; margin:0 auto; align-items:stretch;
+}
+@media (max-width:991.98px){ .adv-desktop{display:none;} }
+.adv-mobile{display:none;}
+@media (max-width:991.98px){ .adv-mobile{display:block;} }
+
+.adv-col{display:flex; flex-direction:column; justify-content:space-between; padding:1.2rem 0;}
+.adv-col.left{align-items:flex-end; text-align:right;}
+.adv-col.right{align-items:flex-start; text-align:left;}
+.adv-item-text{font-weight:800; font-size:1.02rem; color:var(--navy); line-height:1.3; max-width:200px;}
+
+.adv-ring-wrap{grid-area:ring; position:relative; width:380px; height:380px; margin:0 1rem;}
+.adv-ring{
+  position:absolute; inset:0; border-radius:50%;
+  background:conic-gradient(from 200deg, var(--navy), var(--blue) 45%, var(--navy) 90%, var(--blue-dark) 100%);
+  box-shadow:0 20px 44px -18px rgba(11,37,69,.5);
+}
+.adv-ring-inner{
+  position:absolute; inset:34px; border-radius:50%; background:#fff; border:4px solid var(--gold);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:1rem;
+}
+.adv-logo-star{font-size:2.4rem; color:var(--navy); line-height:1;}
+.adv-logo-name{font-family:'Sora',sans-serif; font-weight:800; color:var(--navy); font-size:1.15rem; margin-top:.3rem;}
+.adv-logo-sub{font-size:.6rem; letter-spacing:.08em; color:var(--muted); text-transform:uppercase; margin-top:.15rem;}
+
+.adv-icon{
+  position:absolute; width:76px; height:76px; border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--navy)); border:3px solid #fff;
+  box-shadow:0 10px 24px -10px rgba(11,37,69,.5); display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:1.5rem; z-index:2;
+}
+.adv-icon.pos-l{left:0; transform:translate(-50%,-50%);}
+.adv-icon.pos-r{right:0; transform:translate(50%,-50%);}
+
+/* mobile advantages layout */
+.adv-mobile-logo{
+  width:150px; height:150px; border-radius:50%; margin:0 auto 2.2rem;
+  background:conic-gradient(from 200deg, var(--navy), var(--blue) 45%, var(--navy) 90%, var(--blue-dark) 100%);
+  position:relative; box-shadow:0 16px 34px -16px rgba(11,37,69,.5);
+}
+.adv-mobile-logo .adv-ring-inner{inset:14px; padding:.4rem;}
+.adv-mobile-logo .adv-logo-star{font-size:1.5rem;}
+.adv-mobile-logo .adv-logo-name{font-size:.8rem;}
+.adv-mobile-logo .adv-logo-sub{font-size:.46rem;}
+.adv-m-card{
+  background:var(--card); border:1px solid var(--line); border-radius:14px; padding:1.1rem;
+  display:flex; align-items:center; gap:.9rem; height:100%;
+}
+.adv-m-ico{
+  width:48px; height:48px; border-radius:50%; flex:0 0 48px; background:linear-gradient(135deg,var(--blue),var(--navy));
+  color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.2rem;
+}
+.adv-m-card strong{color:var(--navy); font-size:.92rem;}
+
+/* contact */
+.contact-card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:1.6rem; height:100%;}
+.contact-ico{width:42px;height:42px;border-radius:10px;background:var(--sky); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:1.1rem;}
+.map-frame{width:100%; height:380px; border:0; border-radius:14px;}
+
+/* footer */
+footer.site-footer{background:var(--navy); color:#C9D3E4; padding:3.2rem 0 1.4rem;}
+footer.site-footer h6{color:#fff; font-weight:700; margin-bottom:1rem;}
+footer.site-footer a{color:#A9B8D2;}
+footer.site-footer a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12); margin-top:2rem; padding-top:1.2rem; font-size:.85rem; color:#8FA0C0;}
+
+/* floating whatsapp button */
+.fab-wa{
+  position:fixed; bottom:22px; right:22px; z-index:1050; background:var(--wa); color:#fff; width:58px; height:58px;
+  border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; box-shadow:0 10px 24px -8px rgba(37,211,102,.6);
+  animation:pulseWa 2.4s infinite;
+}
+@keyframes pulseWa{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5);}70%{box-shadow:0 0 0 14px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
+@media (max-width:767.98px){ .fab-wa{bottom:82px;} }
+
+/* navbar wishlist icon */
+.nav-wishlist-btn{
+  position:relative; width:42px; height:42px; border-radius:50%; border:1.5px solid var(--line); background:#fff;
+  display:flex; align-items:center; justify-content:center; color:var(--navy); font-size:1.05rem; transition:.2s ease;
+}
+.nav-wishlist-btn:hover{border-color:var(--blue); color:var(--blue);}
+.nav-wishlist-badge{
+  position:absolute; top:-6px; right:-6px; background:#E0455A; color:#fff; font-size:.65rem; font-weight:800;
+  min-width:18px; height:18px; border-radius:9px; display:flex; align-items:center; justify-content:center; padding:0 4px;
+}
+
+/* ===== Quick View modal ===== */
+.qv-modal .modal-content{border:none; border-radius:18px; overflow:hidden;}
+.qv-img{width:100%; height:100%; min-height:260px; object-fit:cover; background:var(--sky);}
+.qv-body{padding:2rem;}
+.qv-body .brand-tag{margin-bottom:.6rem;}
+.qv-close{position:absolute; top:14px; right:14px; z-index:3;}
+.qv-qty{
+  display:inline-flex; align-items:center; border:1.5px solid var(--line); border-radius:8px; overflow:hidden;
+}
+.qv-qty button{background:var(--sky); border:none; width:36px; height:36px; font-weight:700; color:var(--navy);}
+.qv-qty input{width:48px; height:36px; border:none; text-align:center; font-weight:700; color:var(--navy);}
+.qv-qty input:focus{outline:none;}
+
+/* ===== Left wishlist / cart drawer (offcanvas) ===== */
+.offcanvas-wishlist{width:min(400px, 92vw);}
+.offcanvas-wishlist .offcanvas-header{border-bottom:1px solid var(--line);}
+.offcanvas-wishlist .offcanvas-title{font-family:'Sora',sans-serif; font-weight:800; color:var(--navy);}
+.wl-item{display:flex; gap:.9rem; align-items:center; padding:.8rem 0; border-bottom:1px solid var(--line);}
+.wl-item img{width:64px; height:64px; border-radius:10px; object-fit:cover; background:var(--sky); flex:0 0 64px;}
+.wl-item-name{font-weight:700; font-size:.9rem; color:var(--navy); margin-bottom:.15rem;}
+.wl-item-brand{font-size:.76rem; color:var(--muted);}
+.wl-remove{background:none; border:none; color:var(--muted); font-size:1.1rem; padding:.3rem;}
+.wl-remove:hover{color:#E0455A;}
+.wl-empty{text-align:center; padding:3rem 1rem; color:var(--muted);}
+.wl-empty i{font-size:2.4rem; color:var(--line); display:block; margin-bottom:.8rem;}
+
+/* ===== bottom sticky promo bar ===== */
+.promo-bar{
+  position:fixed; left:0; right:0; bottom:0; z-index:1040; background:var(--navy); color:#fff;
+  padding:.8rem 1rem; transform:translateY(100%); transition:transform .35s ease;
+  box-shadow:0 -10px 26px -12px rgba(0,0,0,.35);
+}
+.promo-bar.is-visible{transform:translateY(0);}
+.promo-bar-inner{
+  max-width:1240px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+}
+.promo-text{display:flex; align-items:center; gap:.6rem; font-size:.9rem;}
+.promo-text .dot{width:9px; height:9px; border-radius:50%; background:var(--gold); animation:pulseWa 1.8s infinite;}
+.promo-actions{display:flex; gap:.6rem; align-items:center;}
+.promo-actions .btn{padding:.5rem 1.1rem; font-size:.85rem;}
+.promo-close{background:none; border:none; color:#C9D3E4; font-size:1.2rem; padding:.2rem .4rem;}
+.promo-close:hover{color:#fff;}
+@media (max-width:767.98px){
+  .promo-bar{padding:.7rem .8rem;}
+  .promo-text span:not(.dot){display:none;}
+  .promo-actions .btn{flex:1; padding:.6rem .5rem; font-size:.82rem;}
+  .promo-actions{flex:1;}
+}
+
+[data-aos]{opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease;}
+[data-aos].aos-in{opacity:1; transform:none;}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg navbar-bs sticky-top">
+  <div class="container container-xl">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#top">
+      <span class="brand-star"><i class="bi bi-stars"></i></span>
+      <span class="font-display fw-bold fs-5 text-navy" style="color:var(--navy)">Blue Star</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <i class="bi bi-list fs-2"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav mx-auto my-3 my-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#top">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="#brands">Brands</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#quote">Quick Quote</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      <div class="d-flex gap-2 align-items-center">
+        <button class="nav-wishlist-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#wishlistDrawer" aria-label="Open wishlist">
+          <i class="bi bi-heart"></i>
+          <span class="nav-wishlist-badge d-none" id="wishlistBadge">0</span>
+        </button>
+        <a href="tel:+97142345678" class="btn btn-outline-navy btn-sm d-flex align-items-center gap-2"><i class="bi bi-telephone-fill"></i> Call</a>
+        <a href="https://wa.me/971501234567?text=Hello%20Blue%20Star%2C%20I%27d%20like%20to%20enquire%20about%20your%20products." target="_blank" class="btn btn-wa btn-sm d-flex align-items-center gap-2"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header id="top" class="hero">
+  <canvas id="heroCanvas" class="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="container container-xl hero-content">
+    <div class="row align-items-center">
+      <div class="col-lg-8" data-aos>
+        <span class="eyebrow"><i class="bi bi-stars"></i> Building Material Trading — UAE</span>
+        <h1 class="mt-3">BLUE STAR BUILDING MATERIAL TRADING LLC</h1>
+        <p class="hero-tagline mb-0">Your Trusted Partner for Building Materials in the UAE</p>
+        <p class="lead-copy mt-3">Quality Products &nbsp;•&nbsp; Competitive Prices &nbsp;•&nbsp; Reliable Service</p>
+
+        <div class="d-flex gap-3 flex-wrap mt-4">
+          <a href="https://wa.me/971501234567?text=Hello%20Blue%20Star%2C%20I%27d%20like%20to%20enquire%20about%20your%20products." target="_blank" class="btn btn-wa d-flex align-items-center gap-2"><i class="bi bi-whatsapp"></i> WhatsApp Us</a>
+          <a href="tel:+97142345678" class="btn btn-primary-bs d-flex align-items-center gap-2"><i class="bi bi-telephone-fill"></i> Call Now</a>
+          <a href="#products" class="btn btn-outline-navy" style="border-color:#fff; color:#fff;">View Products</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3 mt-5" data-aos>
+      <div class="col-6 col-md-4 col-lg-2-4" style="flex:0 0 20%; max-width:20%;">
+        <a href="#products" class="cat-chip d-block"><i class="bi bi-bricks"></i><span>Building Materials</span></a>
+      </div>
+      <div class="col-6 col-md-4" style="flex:0 0 20%; max-width:20%;">
+        <a href="#products" class="cat-chip d-block"><i class="bi bi-lightning-charge-fill"></i><span>Electrical</span></a>
+      </div>
+      <div class="col-6 col-md-4" style="flex:0 0 20%; max-width:20%;">
+        <a href="#products" class="cat-chip d-block"><i class="bi bi-droplet-fill"></i><span>Plumbing & Sanitary</span></a>
+      </div>
+      <div class="col-6 col-md-4" style="flex:0 0 20%; max-width:20%;">
+        <a href="#products" class="cat-chip d-block"><i class="bi bi-palette-fill"></i><span>Paints</span></a>
+      </div>
+      <div class="col-6 col-md-4" style="flex:0 0 20%; max-width:20%;">
+        <a href="#products" class="cat-chip d-block"><i class="bi bi-tools"></i><span>Hardware & Accessories</span></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="section">
+  <div class="container container-xl">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6" data-aos>
+        <span class="eyebrow"><i class="bi bi-stars"></i> About Us</span>
+        <h2 class="section-title">Blue Star Building Material Trading LLC</h2>
+        <p class="text-muted-2 mt-3">Blue Star Building Material Trading LLC is a UAE-based supplier of building materials, electrical goods, plumbing and sanitary products, paints, and hardware. We work with contractors, project teams, and individual customers across the UAE, offering genuine products at competitive prices with fast, dependable service.</p>
+        <p class="text-muted-2">From small retail purchases to large wholesale and project orders, our team is committed to making sourcing simple — with the right stock, the right pricing, and quick turnaround every time.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <span class="badge rounded-pill" style="background:var(--sky); color:var(--blue-dark); padding:.6rem 1rem;"><i class="bi bi-shop me-1"></i> Retail & Wholesale</span>
+          <span class="badge rounded-pill" style="background:var(--sky); color:var(--blue-dark); padding:.6rem 1rem;"><i class="bi bi-hammer me-1"></i> Contractor Supply</span>
+          <span class="badge rounded-pill" style="background:var(--sky); color:var(--blue-dark); padding:.6rem 1rem;"><i class="bi bi-geo-alt me-1"></i> UAE Market</span>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos>
+        <div class="p-4 rounded-4" style="background:var(--sky);">
+          <h5 class="fw-bold mb-3">Why Choose Blue Star?</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="why-card"><div class="why-ico"><i class="bi bi-patch-check-fill"></i></div><div><strong>Genuine Products</strong><div class="text-muted-2 small">100% authentic, quality-checked materials.</div></div></div>
+            </div>
+            <div class="col-md-6">
+              <div class="why-card"><div class="why-ico"><i class="bi bi-tags-fill"></i></div><div><strong>Competitive Prices</strong><div class="text-muted-2 small">Fair pricing for retail and bulk orders.</div></div></div>
+            </div>
+            <div class="col-md-6">
+              <div class="why-card"><div class="why-ico"><i class="bi bi-boxes"></i></div><div><strong>Wide Product Range</strong><div class="text-muted-2 small">Everything from cement to hardware in one place.</div></div></div>
+            </div>
+            <div class="col-md-6">
+              <div class="why-card"><div class="why-ico"><i class="bi bi-person-badge-fill"></i></div><div><strong>Professional Service</strong><div class="text-muted-2 small">Knowledgeable staff, honest advice.</div></div></div>
+            </div>
+            <div class="col-md-6">
+              <div class="why-card"><div class="why-ico"><i class="bi bi-lightning-fill"></i></div><div><strong>Fast Response</strong><div class="text-muted-2 small">Quick replies on WhatsApp & phone.</div></div></div>
+            </div>
+            <div class="col-md-6">
+              <div class="why-card"><div class="why-ico"><i class="bi bi-truck"></i></div><div><strong>Reliable Supply</strong><div class="text-muted-2 small">Consistent stock, on-time delivery.</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OUR ADVANTAGES ===== -->
+<section class="section adv-section">
+  <div class="container container-xl text-center">
+    <span class="eyebrow"><i class="bi bi-stars"></i> Why Choose Us</span>
+    <h2 class="section-title mx-auto">Our Advantages</h2>
+    <p class="section-sub mx-auto mt-2">What sets Blue Star apart when you're sourcing building materials across the UAE.</p>
+
+    <!-- Desktop / tablet: radial layout -->
+    <div class="adv-desktop mt-5" data-aos>
+      <div class="adv-col left" style="grid-area:l1;">
+        <div class="adv-item-text">Wide range of products</div>
+      </div>
+      <div class="adv-col left" style="grid-area:l2;">
+        <div class="adv-item-text">On site delivery</div>
+      </div>
+      <div class="adv-col left" style="grid-area:l3;">
+        <div class="adv-item-text">Fast and reliable service</div>
+      </div>
+
+      <div class="adv-ring-wrap">
+        <div class="adv-ring"></div>
+        <div class="adv-ring-inner">
+          <i class="bi bi-stars adv-logo-star"></i>
+          <div class="adv-logo-name">BLUE STAR</div>
+          <div class="adv-logo-sub">Building Material Trading LLC</div>
+        </div>
+        <div class="adv-icon pos-l" style="top:12%;"><i class="bi bi-boxes"></i></div>
+        <div class="adv-icon pos-l" style="top:50%;"><i class="bi bi-truck"></i></div>
+        <div class="adv-icon pos-l" style="top:88%;"><i class="bi bi-shield-check"></i></div>
+        <div class="adv-icon pos-r" style="top:12%;"><i class="bi bi-graph-up-arrow"></i></div>
+        <div class="adv-icon pos-r" style="top:50%;"><i class="bi bi-person-badge-fill"></i></div>
+        <div class="adv-icon pos-r" style="top:88%;"><i class="bi bi-shop-window"></i></div>
+      </div>
+
+      <div class="adv-col right" style="grid-area:r1;">
+        <div class="adv-item-text">Highly Competitive pricing.</div>
+      </div>
+      <div class="adv-col right" style="grid-area:r2;">
+        <div class="adv-item-text">Presence of Qualified staffs.</div>
+      </div>
+      <div class="adv-col right" style="grid-area:r3;">
+        <div class="adv-item-text">Wholesale &amp; Retail Supply</div>
+      </div>
+    </div>
+
+    <!-- Mobile: logo + card grid -->
+    <div class="adv-mobile" data-aos>
+      <div class="adv-mobile-logo">
+        <div class="adv-ring-inner">
+          <i class="bi bi-stars adv-logo-star"></i>
+          <div class="adv-logo-name">BLUE STAR</div>
+          <div class="adv-logo-sub">Building Material Trading LLC</div>
+        </div>
+      </div>
+      <div class="row g-3 text-start">
+        <div class="col-6">
+          <div class="adv-m-card"><div class="adv-m-ico"><i class="bi bi-boxes"></i></div><strong>Wide range of products</strong></div>
+        </div>
+        <div class="col-6">
+          <div class="adv-m-card"><div class="adv-m-ico"><i class="bi bi-graph-up-arrow"></i></div><strong>Highly competitive pricing</strong></div>
+        </div>
+        <div class="col-6">
+          <div class="adv-m-card"><div class="adv-m-ico"><i class="bi bi-truck"></i></div><strong>On site delivery</strong></div>
+        </div>
+        <div class="col-6">
+          <div class="adv-m-card"><div class="adv-m-ico"><i class="bi bi-person-badge-fill"></i></div><strong>Qualified staff</strong></div>
+        </div>
+        <div class="col-6">
+          <div class="adv-m-card"><div class="adv-m-ico"><i class="bi bi-shield-check"></i></div><strong>Fast &amp; reliable service</strong></div>
+        </div>
+        <div class="col-6">
+          <div class="adv-m-card"><div class="adv-m-ico"><i class="bi bi-shop-window"></i></div><strong>Wholesale &amp; retail supply</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section id="products" class="section bg-sky">
+  <div class="container container-xl">
+    <div class="text-center" data-aos>
+      <span class="eyebrow"><i class="bi bi-stars"></i> Our Products</span>
+      <h2 class="section-title mx-auto">Everything You Need, Under One Roof</h2>
+      <p class="section-sub mx-auto mt-2">Browse by category — tap any product to ask for pricing directly on WhatsApp.</p>
+    </div>
+
+    <ul class="nav nav-pills-bs justify-content-center mt-4 flex-wrap" id="prodTabs" data-aos>
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-building">Building Materials</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-electrical">Electrical</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-plumbing">Plumbing & Sanitary</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-paints">Paints</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-hardware">Hardware</button></li>
+    </ul>
+
+    <div class="tab-content mt-4">
+
+      <!-- Building Materials -->
+      <div class="tab-pane fade show active" id="tab-building">
+        <div id="carousel-building" class="carousel slide brand-carousel" data-bs-ride="carousel" data-bs-interval="4500" data-bs-pause="hover">
+          <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-4 justify-content-center">
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Cement & Construction Materials" data-brand="Multi-Brand" data-spec="OPC / PPC cement, aggregates, blocks — bulk & retail quantities." data-img="https://images.unsplash.com/photo-1590496793929-36417d3117de?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1590496793929-36417d3117de?q=80&w=600&auto=format&fit=crop" alt="Cement bags">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Cement & Construction Materials</h6>
+                  <div class="spec-txt">OPC / PPC cement, aggregates, blocks — bulk & retail quantities.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Cement & Construction Materials'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Tile & Construction Adhesives" data-brand="Multi-Brand" data-spec="High-bond adhesives for tiling, blockwork, and general use." data-img="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=600&auto=format&fit=crop" alt="Adhesives">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Tile & Construction Adhesives</h6>
+                  <div class="spec-txt">High-bond adhesives for tiling, blockwork, and general use.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Tile & Construction Adhesives'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Sealants" data-brand="Multi-Brand" data-spec="Silicone & polyurethane sealants for joints and gaps." data-img="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=600&auto=format&fit=crop" alt="Sealants">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Sealants</h6>
+                  <div class="spec-txt">Silicone & polyurethane sealants for joints and gaps.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Sealants'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row g-4 justify-content-center">
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Waterproofing Solutions" data-brand="Multi-Brand" data-spec="Membranes and coatings for roofs, walls & wet areas." data-img="https://images.unsplash.com/photo-1632759145355-8a586e2172ae?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1632759145355-8a586e2172ae?q=80&w=600&auto=format&fit=crop" alt="Waterproofing">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Waterproofing Solutions</h6>
+                  <div class="spec-txt">Membranes and coatings for roofs, walls & wet areas.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Waterproofing Solutions'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Construction Tools" data-brand="Multi-Brand" data-spec="Hand and power tools for site and workshop use." data-img="https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=600&auto=format&fit=crop" alt="Tools">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Construction Tools</h6>
+                  <div class="spec-txt">Hand and power tools for site and workshop use.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Construction Tools'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <button class="slider-nav prev" type="button" data-bs-target="#carousel-building" data-bs-slide="prev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+          <button class="slider-nav next" type="button" data-bs-target="#carousel-building" data-bs-slide="next" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+          <div class="carousel-indicators brand-indicators">
+            <button type="button" data-bs-target="#carousel-building" data-bs-slide-to="0" class="active" aria-current="true"></button>
+            <button type="button" data-bs-target="#carousel-building" data-bs-slide-to="1"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Electrical -->
+      <div class="tab-pane fade" id="tab-electrical">
+        <div id="carousel-electrical" class="carousel slide brand-carousel" data-bs-ride="carousel" data-bs-interval="4500" data-bs-pause="hover">
+          <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-4 justify-content-center">
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Switches & Sockets" data-brand="Multi-Brand" data-spec="Modular switches, sockets & wiring devices." data-img="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=600&auto=format&fit=crop" alt="Switches and sockets">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Switches & Sockets</h6>
+                  <div class="spec-txt">Modular switches, sockets & wiring devices.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Switches & Sockets'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Cables & Wires" data-brand="Multi-Brand" data-spec="Copper cables in various sizes for all installations." data-img="https://images.unsplash.com/photo-1558575583-de6f2c6c5d3e?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1558575583-de6f2c6c5d3e?q=80&w=600&auto=format&fit=crop" alt="Cables">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Cables & Wires</h6>
+                  <div class="spec-txt">Copper cables in various sizes for all installations.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Cables & Wires'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="LED Lighting" data-brand="Multi-Brand" data-spec="Indoor & outdoor LED fixtures, panels and bulbs." data-img="https://images.unsplash.com/photo-1565636291023-51d47a3a7c39?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1565636291023-51d47a3a7c39?q=80&w=600&auto=format&fit=crop" alt="LED lighting">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">LED Lighting</h6>
+                  <div class="spec-txt">Indoor & outdoor LED fixtures, panels and bulbs.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('LED Lighting'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row g-4 justify-content-center">
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Electrical Accessories" data-brand="Multi-Brand" data-spec="MCBs, distribution boards & general accessories." data-img="https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=600&auto=format&fit=crop" alt="Electrical accessories">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Electrical Accessories</h6>
+                  <div class="spec-txt">MCBs, distribution boards & general accessories.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Electrical Accessories'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Conduits & Fittings" data-brand="Multi-Brand" data-spec="PVC & flexible conduits with matching fittings." data-img="https://images.unsplash.com/photo-1621905252472-943c48e9a3ff?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1621905252472-943c48e9a3ff?q=80&w=600&auto=format&fit=crop" alt="Conduits and fittings">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Conduits & Fittings</h6>
+                  <div class="spec-txt">PVC & flexible conduits with matching fittings.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Conduits & Fittings'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <button class="slider-nav prev" type="button" data-bs-target="#carousel-electrical" data-bs-slide="prev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+          <button class="slider-nav next" type="button" data-bs-target="#carousel-electrical" data-bs-slide="next" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+          <div class="carousel-indicators brand-indicators">
+            <button type="button" data-bs-target="#carousel-electrical" data-bs-slide-to="0" class="active" aria-current="true"></button>
+            <button type="button" data-bs-target="#carousel-electrical" data-bs-slide-to="1"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plumbing -->
+      <div class="tab-pane fade" id="tab-plumbing">
+        <div id="carousel-plumbing" class="carousel slide brand-carousel" data-bs-ride="carousel" data-bs-interval="4500" data-bs-pause="hover">
+          <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-4 justify-content-center">
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Pipes & Fittings" data-brand="Multi-Brand" data-spec="PPR, UPVC & GI pipes with a full range of fittings." data-img="https://images.unsplash.com/photo-1607472829122-983f30c9d3a2?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1607472829122-983f30c9d3a2?q=80&w=600&auto=format&fit=crop" alt="Pipes and fittings">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Pipes & Fittings</h6>
+                  <div class="spec-txt">PPR, UPVC & GI pipes with a full range of fittings.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Pipes & Fittings'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Valves" data-brand="Multi-Brand" data-spec="Ball, gate & check valves for water systems." data-img="https://images.unsplash.com/photo-1585909334969-a7b96422a49e?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1585909334969-a7b96422a49e?q=80&w=600&auto=format&fit=crop" alt="Valves">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Valves</h6>
+                  <div class="spec-txt">Ball, gate & check valves for water systems.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Valves'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Faucets & Mixers" data-brand="Multi-Brand" data-spec="Kitchen and bathroom faucets in multiple finishes." data-img="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop" alt="Faucets">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Faucets & Mixers</h6>
+                  <div class="spec-txt">Kitchen and bathroom faucets in multiple finishes.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Faucets & Mixers'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row g-4 justify-content-center">
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Bathroom Accessories" data-brand="Multi-Brand" data-spec="Towel rails, holders, and fittings for bathrooms." data-img="https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=600&auto=format&fit=crop" alt="Bathroom accessories">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Bathroom Accessories</h6>
+                  <div class="spec-txt">Towel rails, holders, and fittings for bathrooms.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Bathroom Accessories'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Water Tanks & Related Products" data-brand="Multi-Brand" data-spec="Storage tanks, pumps and water treatment accessories." data-img="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=600&auto=format&fit=crop" alt="Water related products">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Water Tanks & Related Products</h6>
+                  <div class="spec-txt">Storage tanks, pumps and water treatment accessories.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Water Tanks & Related Products'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <button class="slider-nav prev" type="button" data-bs-target="#carousel-plumbing" data-bs-slide="prev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+          <button class="slider-nav next" type="button" data-bs-target="#carousel-plumbing" data-bs-slide="next" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+          <div class="carousel-indicators brand-indicators">
+            <button type="button" data-bs-target="#carousel-plumbing" data-bs-slide-to="0" class="active" aria-current="true"></button>
+            <button type="button" data-bs-target="#carousel-plumbing" data-bs-slide-to="1"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paints -->
+      <div class="tab-pane fade" id="tab-paints">
+        <div id="carousel-paints" class="carousel slide brand-carousel" data-bs-ride="carousel" data-bs-interval="4500" data-bs-pause="hover">
+          <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-4 justify-content-center">
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Interior & Exterior Paints" data-brand="Multi-Brand" data-spec="Emulsion, weather-shield & decorative finishes." data-img="https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=600&auto=format&fit=crop" alt="Interior exterior paints">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Interior & Exterior Paints</h6>
+                  <div class="spec-txt">Emulsion, weather-shield & decorative finishes.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Interior & Exterior Paints'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Primers" data-brand="Multi-Brand" data-spec="Wall & metal primers for a long-lasting finish." data-img="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop" alt="Primers">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Primers</h6>
+                  <div class="spec-txt">Wall & metal primers for a long-lasting finish.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Primers'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Thinners" data-brand="Multi-Brand" data-spec="Paint thinners and solvents for all paint types." data-img="https://images.unsplash.com/photo-1613909207039-6b173b755cc1?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1613909207039-6b173b755cc1?q=80&w=600&auto=format&fit=crop" alt="Thinners">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Thinners</h6>
+                  <div class="spec-txt">Paint thinners and solvents for all paint types.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Thinners'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row g-4 justify-content-center">
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Paint Accessories" data-brand="Multi-Brand" data-spec="Rollers, brushes, trays and masking tape." data-img="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop" alt="Paint accessories">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Paint Accessories</h6>
+                  <div class="spec-txt">Rollers, brushes, trays and masking tape.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Paint Accessories'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <button class="slider-nav prev" type="button" data-bs-target="#carousel-paints" data-bs-slide="prev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+          <button class="slider-nav next" type="button" data-bs-target="#carousel-paints" data-bs-slide="next" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+          <div class="carousel-indicators brand-indicators">
+            <button type="button" data-bs-target="#carousel-paints" data-bs-slide-to="0" class="active" aria-current="true"></button>
+            <button type="button" data-bs-target="#carousel-paints" data-bs-slide-to="1"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hardware -->
+      <div class="tab-pane fade" id="tab-hardware">
+        <div id="carousel-hardware" class="carousel slide brand-carousel" data-bs-ride="carousel" data-bs-interval="4500" data-bs-pause="hover">
+          <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-4 justify-content-center">
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Screws & Fasteners" data-brand="Multi-Brand" data-spec="Wide range of screws, bolts, nuts and anchors." data-img="https://images.unsplash.com/photo-1591588582259-e5f27a5d5b0c?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1591588582259-e5f27a5d5b0c?q=80&w=600&auto=format&fit=crop" alt="Screws and fasteners">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Screws & Fasteners</h6>
+                  <div class="spec-txt">Wide range of screws, bolts, nuts and anchors.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Screws & Fasteners'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Locks" data-brand="Multi-Brand" data-spec="Door, cabinet & padlock solutions." data-img="https://images.unsplash.com/photo-1622037022824-0c71d511ef3c?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1622037022824-0c71d511ef3c?q=80&w=600&auto=format&fit=crop" alt="Locks">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Locks</h6>
+                  <div class="spec-txt">Door, cabinet & padlock solutions.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Locks'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Hinges" data-brand="Multi-Brand" data-spec="Door & cabinet hinges in various finishes." data-img="https://images.unsplash.com/photo-1631048499332-70dc25d1eae5?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1631048499332-70dc25d1eae5?q=80&w=600&auto=format&fit=crop" alt="Hinges">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Hinges</h6>
+                  <div class="spec-txt">Door & cabinet hinges in various finishes.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Hinges'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row g-4 justify-content-center">
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="Hand Tools" data-brand="Multi-Brand" data-spec="Hammers, wrenches, pliers and more." data-img="https://images.unsplash.com/photo-1580901368919-7738efb0f87e?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1580901368919-7738efb0f87e?q=80&w=600&auto=format&fit=crop" alt="Hand tools">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">Hand Tools</h6>
+                  <div class="spec-txt">Hammers, wrenches, pliers and more.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('Hand Tools'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-6 col-md-4">
+            <div class="product-card" data-name="General Hardware" data-brand="Multi-Brand" data-spec="Everyday hardware essentials for site and home." data-img="https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=600&auto=format&fit=crop">
+                <div class="pc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=600&auto=format&fit=crop" alt="General hardware">
+                  <button class="pc-wishlist" onclick="toggleWishlist(this); event.stopPropagation();" aria-label="Save item"><i class="bi bi-heart"></i></button>
+                  <button class="pc-quickview" onclick="openQuickView(this.closest('.product-card'))"><i class="bi bi-eye"></i> Quick View</button>
+                </div>
+                <div class="product-body">
+                  <span class="brand-tag">Multi-Brand</span>
+                  <h6 class="fw-bold mb-1">General Hardware</h6>
+                  <div class="spec-txt">Everyday hardware essentials for site and home.</div>
+                  <a href="#" class="ask-price" onclick="askPrice('General Hardware'); return false;"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <button class="slider-nav prev" type="button" data-bs-target="#carousel-hardware" data-bs-slide="prev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+          <button class="slider-nav next" type="button" data-bs-target="#carousel-hardware" data-bs-slide="next" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+          <div class="carousel-indicators brand-indicators">
+            <button type="button" data-bs-target="#carousel-hardware" data-bs-slide-to="0" class="active" aria-current="true"></button>
+            <button type="button" data-bs-target="#carousel-hardware" data-bs-slide-to="1"></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== BRANDS ===== -->
+<section id="brands" class="section">
+  <div class="container container-xl text-center">
+    <span class="eyebrow"><i class="bi bi-stars"></i> Our Brands</span>
+    <h2 class="section-title mx-auto">Trusted Brands We Supply</h2>
+    <p class="section-sub mx-auto mt-2">We continuously add new brands as our business grows — reach out for the full brand list.</p>
+    <div class="row g-3 mt-3" data-aos>
+      <div class="col-4 col-md-2"><div class="brand-tile">BRAND A</div></div>
+      <div class="col-4 col-md-2"><div class="brand-tile">BRAND B</div></div>
+      <div class="col-4 col-md-2"><div class="brand-tile">BRAND C</div></div>
+      <div class="col-4 col-md-2"><div class="brand-tile">BRAND D</div></div>
+      <div class="col-4 col-md-2"><div class="brand-tile">BRAND E</div></div>
+      <div class="col-4 col-md-2"><div class="brand-tile">BRAND F</div></div>
+      <div class="col-4 col-md-2"><div class="brand-tile">BRAND G</div></div>
+      <div class="col-4 col-md-2"><div class="brand-tile">BRAND H</div></div>
+      <div class="col-4 col-md-2"><div class="brand-tile">BRAND I</div></div>
+      <div class="col-4 col-md-2"><div class="brand-tile">BRAND J</div></div>
+      <div class="col-4 col-md-2"><div class="brand-tile">BRAND K</div></div>
+      <div class="col-4 col-md-2"><div class="brand-tile">+ MORE</div></div>
+    </div>
+    <p class="small text-muted-2 mt-3">Placeholder tiles shown — swap in your real brand logos anytime.</p>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="section bg-sky">
+  <div class="container container-xl">
+    <div class="text-center" data-aos>
+      <span class="eyebrow"><i class="bi bi-stars"></i> Our Services</span>
+      <h2 class="section-title mx-auto">Supply Solutions For Every Need</h2>
+    </div>
+    <div class="row g-4 mt-4">
+      <div class="col-md-6 col-lg-4" data-aos>
+        <div class="service-card">
+          <div class="service-ico"><i class="bi bi-shop"></i></div>
+          <h6 class="fw-bold">Retail Supply</h6>
+          <p class="text-muted-2 small mb-0">For individual customers and small requirements — walk in or order over WhatsApp.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos>
+        <div class="service-card">
+          <div class="service-ico"><i class="bi bi-boxes"></i></div>
+          <h6 class="fw-bold">Wholesale Supply</h6>
+          <p class="text-muted-2 small mb-0">Competitive pricing for regular buyers and repeat orders.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos>
+        <div class="service-card">
+          <div class="service-ico"><i class="bi bi-hammer"></i></div>
+          <h6 class="fw-bold">Contractor Supply</h6>
+          <p class="text-muted-2 small mb-0">Reliable material supply for contractors and construction teams.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos>
+        <div class="service-card">
+          <div class="service-ico"><i class="bi bi-building"></i></div>
+          <h6 class="fw-bold">Project Supply</h6>
+          <p class="text-muted-2 small mb-0">Bulk requirements handled efficiently for large building projects.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos>
+        <div class="service-card">
+          <div class="service-ico"><i class="bi bi-whatsapp"></i></div>
+          <h6 class="fw-bold">Product Enquiries</h6>
+          <p class="text-muted-2 small mb-0">Send your requirement through WhatsApp and receive pricing quickly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUICK QUOTE ===== -->
+<section id="quote" class="section">
+  <div class="container container-xl">
+    <div class="text-center mb-4" data-aos>
+      <span class="eyebrow"><i class="bi bi-stars"></i> Quick Quote</span>
+      <h2 class="section-title mx-auto">Request a Quote</h2>
+      <p class="section-sub mx-auto mt-2">Fill in your requirement and we'll send it straight to our WhatsApp — you'll hear back with pricing fast.</p>
+    </div>
+
+    <div class="quote-wrap" data-aos>
+      <div class="row g-0">
+        <div class="col-lg-4 p-4 p-lg-5 d-flex flex-column justify-content-center">
+          <h4 class="fw-bold mb-3">Why request here?</h4>
+          <div class="star-li"><i class="bi bi-check-circle-fill"></i><span>Fastest way to get accurate pricing</span></div>
+          <div class="star-li"><i class="bi bi-check-circle-fill"></i><span>Goes directly to our sales WhatsApp</span></div>
+          <div class="star-li"><i class="bi bi-check-circle-fill"></i><span>No account or sign-up needed</span></div>
+          <div class="star-li"><i class="bi bi-check-circle-fill"></i><span>Works for retail, wholesale & project orders</span></div>
+        </div>
+        <div class="col-lg-8">
+          <div class="quote-form-panel">
+            <form id="quoteForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Name</label>
+                  <input type="text" id="qName" class="form-control form-control-bs" placeholder="Your full name" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Company</label>
+                  <input type="text" id="qCompany" class="form-control form-control-bs" placeholder="Company name (optional)">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Mobile / WhatsApp</label>
+                  <input type="tel" id="qMobile" class="form-control form-control-bs" placeholder="+971 5xx xxx xxx" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Product Required</label>
+                  <input type="text" id="qProduct" class="form-control form-control-bs" placeholder="e.g. PPR Pipes 25mm" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Quantity</label>
+                  <input type="text" id="qQty" class="form-control form-control-bs" placeholder="e.g. 200 pcs">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Upload Product / Photo</label>
+                  <input type="file" id="qFile" class="form-control form-control-bs">
+                  <div class="form-text">Photos can't attach to WhatsApp links — you'll be prompted to attach it directly in the chat.</div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label small fw-semibold">Message</label>
+                  <textarea id="qMessage" class="form-control form-control-bs" rows="3" placeholder="Any extra details..."></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-wa w-100 d-flex align-items-center justify-content-center gap-2"><i class="bi bi-whatsapp"></i> GET QUOTATION</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section bg-sky">
+  <div class="container container-xl">
+    <div class="text-center mb-4" data-aos>
+      <span class="eyebrow"><i class="bi bi-stars"></i> Contact Us</span>
+      <h2 class="section-title mx-auto">BLUE STAR BUILDING MATERIAL TRADING LLC</h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4" data-aos>
+        <div class="d-flex flex-column gap-3">
+          <div class="contact-card d-flex gap-3 align-items-start">
+            <div class="contact-ico"><i class="bi bi-geo-alt-fill"></i></div>
+            <div><strong>Shop Location</strong><div class="text-muted-2 small">Shop No. 12, Al Quoz Industrial Area 4, Dubai, UAE</div></div>
+          </div>
+          <div class="contact-card d-flex gap-3 align-items-start">
+            <div class="contact-ico"><i class="bi bi-telephone-fill"></i></div>
+            <div><strong>Phone</strong><div class="text-muted-2 small">+971 4 234 5678</div></div>
+          </div>
+          <div class="contact-card d-flex gap-3 align-items-start">
+            <div class="contact-ico"><i class="bi bi-whatsapp"></i></div>
+            <div><strong>WhatsApp</strong><div class="text-muted-2 small">+971 50 123 4567</div></div>
+          </div>
+          <div class="contact-card d-flex gap-3 align-items-start">
+            <div class="contact-ico"><i class="bi bi-envelope-fill"></i></div>
+            <div><strong>Email</strong><div class="text-muted-2 small">info@bluestar.ae</div></div>
+          </div>
+          <div class="contact-card d-flex gap-3 align-items-start">
+            <div class="contact-ico"><i class="bi bi-globe"></i></div>
+            <div><strong>Website</strong><div class="text-muted-2 small">www.bluestar.ae</div></div>
+          </div>
+          <div class="d-flex gap-2 flex-wrap mt-1">
+            <a href="tel:+97142345678" class="btn btn-primary-bs btn-sm d-flex align-items-center gap-2"><i class="bi bi-telephone-fill"></i> Call</a>
+            <a href="https://wa.me/971501234567" target="_blank" class="btn btn-wa btn-sm d-flex align-items-center gap-2"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+            <a href="https://maps.google.com/?q=Al+Quoz+Industrial+Area+4+Dubai" target="_blank" class="btn btn-outline-navy btn-sm d-flex align-items-center gap-2"><i class="bi bi-signpost-2-fill"></i> Get Directions</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8" data-aos>
+        <iframe class="map-frame" src="https://www.google.com/maps?q=Al%20Quoz%20Industrial%20Area%204%2C%20Dubai%2C%20UAE&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container container-xl">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <span class="brand-star"><i class="bi bi-stars"></i></span>
+          <span class="font-display fw-bold fs-5 text-white">Blue Star</span>
+        </div>
+        <p class="small">Building Material Trading LLC — your trusted partner for building materials across the UAE.</p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="btn btn-sm btn-outline-light rounded-circle"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="btn btn-sm btn-outline-light rounded-circle"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="btn btn-sm btn-outline-light rounded-circle"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Quick Links</h6>
+        <ul class="list-unstyled d-flex flex-column gap-2 small">
+          <li><a href="#top">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#brands">Brands</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Company</h6>
+        <ul class="list-unstyled d-flex flex-column gap-2 small">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#quote">Quick Quote</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6>Get In Touch</h6>
+        <ul class="list-unstyled d-flex flex-column gap-2 small">
+          <li><i class="bi bi-geo-alt-fill me-1"></i> Al Quoz Industrial Area 4, Dubai, UAE</li>
+          <li><i class="bi bi-telephone-fill me-1"></i> +971 4 234 5678</li>
+          <li><i class="bi bi-envelope-fill me-1"></i> info@bluestar.ae</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom d-flex justify-content-between flex-wrap gap-2">
+      <span>© 2026 Blue Star Building Material Trading LLC. All rights reserved.</span>
+      <span>bluestar.ae</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/971501234567?text=Hello%20Blue%20Star%2C%20I%27d%20like%20to%20enquire%20about%20your%20products." target="_blank" class="fab-wa" aria-label="Chat on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+
+<!-- ===== Quick View Modal ===== -->
+<div class="modal fade qv-modal" id="quickViewModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <button type="button" class="btn-close qv-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="row g-0">
+        <div class="col-md-6">
+          <img id="qvImg" class="qv-img" src="" alt="">
+        </div>
+        <div class="col-md-6">
+          <div class="qv-body">
+            <span class="brand-tag" id="qvBrand">Multi-Brand</span>
+            <h4 class="fw-bold" id="qvName">Product Name</h4>
+            <p class="text-muted-2" id="qvSpec">Product specification goes here.</p>
+
+            <div class="d-flex align-items-center gap-3 my-3">
+              <span class="small fw-semibold text-muted-2">Quantity</span>
+              <div class="qv-qty">
+                <button type="button" onclick="qvChangeQty(-1)">−</button>
+                <input type="text" id="qvQty" value="1" readonly>
+                <button type="button" onclick="qvChangeQty(1)">+</button>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <button class="btn btn-wa d-flex align-items-center gap-2" id="qvAskPrice"><i class="bi bi-whatsapp"></i> Ask Price on WhatsApp</button>
+              <button class="btn btn-outline-navy d-flex align-items-center gap-2" id="qvWishlistBtn" onclick="toggleWishlistFromModal()"><i class="bi bi-heart"></i> Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Left Wishlist / Enquiry Drawer (Offcanvas) ===== -->
+<div class="offcanvas offcanvas-start offcanvas-wishlist" tabindex="-1" id="wishlistDrawer" aria-labelledby="wishlistDrawerLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="wishlistDrawerLabel"><i class="bi bi-heart-fill me-2" style="color:#E0455A;"></i>Your Wishlist</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column">
+    <div id="wishlistItemsWrap" class="flex-grow-1" style="overflow-y:auto;">
+      <div class="wl-empty" id="wishlistEmpty">
+        <i class="bi bi-heart"></i>
+        <div>Your wishlist is empty.</div>
+        <div class="small">Tap the heart icon on any product to save it here.</div>
+      </div>
+    </div>
+    <div class="pt-3 border-top mt-2 d-none" id="wishlistFooter">
+      <button class="btn btn-wa w-100 d-flex align-items-center justify-content-center gap-2" onclick="enquireWishlistOnWhatsApp()"><i class="bi bi-whatsapp"></i> Enquire All on WhatsApp</button>
+      <button class="btn btn-outline-navy w-100 mt-2" onclick="clearWishlist()">Clear All</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Bottom Sticky Promo Bar ===== -->
+<div class="promo-bar" id="promoBar">
+  <div class="promo-bar-inner">
+    <div class="promo-text">
+      <span class="dot"></span>
+      <span>Need help choosing materials? We're online now — chat with our team.</span>
+    </div>
+    <div class="promo-actions">
+      <a href="tel:+97142345678" class="btn btn-outline-navy" style="border-color:#fff; color:#fff;"><i class="bi bi-telephone-fill me-1"></i> Call Now</a>
+      <a href="https://wa.me/971501234567?text=Hello%20Blue%20Star%2C%20I%27d%20like%20to%20enquire%20about%20your%20products." target="_blank" class="btn btn-wa"><i class="bi bi-whatsapp me-1"></i> WhatsApp Us</a>
+      <button class="promo-close" onclick="dismissPromoBar()" aria-label="Dismiss"><i class="bi bi-x-lg"></i></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/128/three.min.js"></script>
+<script>
+// ===== Hero: smooth animated 3D background =====
+(function initHero3D(){
+  const heroEl = document.getElementById('top');
+  const canvas = document.getElementById('heroCanvas');
+  if(!heroEl || !canvas || typeof THREE === 'undefined') return;
+
+  // respect users who prefer reduced motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let width = heroEl.clientWidth, height = heroEl.clientHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
+  camera.position.set(0, 0, 17);
+
+  let renderer;
+  try{
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  }catch(e){ return; } // no WebGL support -> keep static gradient background
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const goldMat = new THREE.LineBasicMaterial({ color: 0xF2A93B, transparent: true, opacity: 0.55 });
+  const blueMat = new THREE.LineBasicMaterial({ color: 0x6FA8E8, transparent: true, opacity: 0.32 });
+
+  const geoBuilders = [
+    () => new THREE.IcosahedronGeometry(1.1, 0),
+    () => new THREE.OctahedronGeometry(1, 0),
+    () => new THREE.BoxGeometry(1.4, 1.4, 1.4),
+    () => new THREE.TetrahedronGeometry(1.2, 0)
+  ];
+
+  const shapes = [];
+  const SHAPE_COUNT = 24;
+  for(let i = 0; i < SHAPE_COUNT; i++){
+    const geo = geoBuilders[i % geoBuilders.length]();
+    const edges = new THREE.EdgesGeometry(geo);
+    const mat = i % 3 === 0 ? goldMat : blueMat;
+    const mesh = new THREE.LineSegments(edges, mat);
+
+    mesh.position.set(
+      (Math.random() - 0.5) * 24,
+      (Math.random() - 0.5) * 15,
+      (Math.random() - 0.5) * 14 - 3
+    );
+    const scale = 0.6 + Math.random() * 1.3;
+    mesh.scale.setScalar(scale);
+    mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
+    mesh.userData.spin = 0.05 + Math.random() * 0.15;
+    mesh.userData.floatOffset = Math.random() * Math.PI * 2;
+    mesh.userData.floatSpeed = 0.15 + Math.random() * 0.25;
+
+    group.add(mesh);
+    shapes.push(mesh);
+  }
+
+  // gentle parallax toward pointer / touch
+  let targetX = 0, targetY = 0;
+  heroEl.addEventListener('pointermove', (e) => {
+    const rect = heroEl.getBoundingClientRect();
+    targetX = ((e.clientX - rect.left) / rect.width - 0.5);
+    targetY = ((e.clientY - rect.top) / rect.height - 0.5);
+  });
+
+  const clock = new THREE.Clock();
+  let rafId;
+
+  function animate(){
+    const t = clock.getElapsedTime();
+    if(!prefersReducedMotion){
+      shapes.forEach(s => {
+        s.rotation.x += 0.0009 * s.userData.spin * 10;
+        s.rotation.y += 0.0013 * s.userData.spin * 10;
+        s.position.y += Math.sin(t * s.userData.floatSpeed + s.userData.floatOffset) * 0.0016;
+      });
+      group.rotation.y += (targetX * 0.35 - group.rotation.y) * 0.02;
+      group.rotation.x += (targetY * 0.18 - group.rotation.x) * 0.02;
+    }
+    renderer.render(scene, camera);
+    rafId = requestAnimationFrame(animate);
+  }
+  animate();
+  canvas.classList.add('is-ready');
+
+  window.addEventListener('resize', () => {
+    width = heroEl.clientWidth;
+    height = heroEl.clientHeight;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+  });
+
+  // pause rendering when hero is off-screen (saves battery/CPU)
+  const visObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        if(!rafId) animate();
+      } else if(rafId){
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    });
+  }, { threshold: 0.05 });
+  visObs.observe(heroEl);
+})();
+</script>
+<script>
+const WA_NUMBER = "971501234567"; // replace with your real WhatsApp number (no + or spaces)
+
+// scroll reveal
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('aos-in'); io.unobserve(e.target);} });
+},{threshold:.1});
+document.querySelectorAll('[data-aos]').forEach(el=>io.observe(el));
+
+// per-product "ask price" whatsapp
+function askPrice(productName){
+  const text = `Hello Blue Star, I'd like to ask for pricing on: ${productName}.`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+// ===================================================================
+// WISHLIST (in-memory for this session — no browser storage is used)
+// ===================================================================
+let wishlist = []; // [{name, brand, img}]
+
+function findWishlistIndex(name){
+  return wishlist.findIndex(item => item.name === name);
+}
+
+function toggleWishlist(cardEl){
+  if(!cardEl) return;
+  const name = cardEl.dataset.name;
+  const brand = cardEl.dataset.brand;
+  const img = cardEl.dataset.img;
+  const idx = findWishlistIndex(name);
+
+  if(idx > -1){
+    wishlist.splice(idx, 1);
+  } else {
+    wishlist.push({ name, brand, img });
+  }
+
+  // sync the heart icon on the card itself
+  const btn = cardEl.querySelector('.pc-wishlist');
+  if(btn){
+    btn.classList.toggle('active', idx === -1);
+    const icon = btn.querySelector('i');
+    icon.classList.toggle('bi-heart', idx > -1);
+    icon.classList.toggle('bi-heart-fill', idx === -1);
+  }
+
+  // sync the modal's Save button if this product is currently open there
+  if(currentQVProduct && currentQVProduct.name === name){
+    syncQvWishlistButton();
+  }
+
+  renderWishlist();
+}
+
+function toggleWishlistFromModal(){
+  if(!currentQVCard) return;
+  toggleWishlist(currentQVCard);
+}
+
+function syncQvWishlistButton(){
+  const isSaved = findWishlistIndex(currentQVProduct.name) > -1;
+  const btn = document.getElementById('qvWishlistBtn');
+  const icon = btn.querySelector('i');
+  icon.classList.toggle('bi-heart', !isSaved);
+  icon.classList.toggle('bi-heart-fill', isSaved);
+  btn.classList.toggle('active', isSaved);
+}
+
+function renderWishlist(){
+  const wrap = document.getElementById('wishlistItemsWrap');
+  const empty = document.getElementById('wishlistEmpty');
+  const footer = document.getElementById('wishlistFooter');
+  const badge = document.getElementById('wishlistBadge');
+
+  // clear existing item rows (keep the empty-state element in the DOM to reuse)
+  wrap.querySelectorAll('.wl-item').forEach(el => el.remove());
+
+  if(wishlist.length === 0){
+    empty.classList.remove('d-none');
+    footer.classList.add('d-none');
+    badge.classList.add('d-none');
+  } else {
+    empty.classList.add('d-none');
+    footer.classList.remove('d-none');
+    badge.classList.remove('d-none');
+    badge.textContent = wishlist.length;
+
+    wishlist.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'wl-item';
+      row.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <div class="flex-grow-1">
+          <div class="wl-item-name">${item.name}</div>
+          <div class="wl-item-brand">${item.brand}</div>
+        </div>
+        <button class="wl-remove" aria-label="Remove"><i class="bi bi-x-lg"></i></button>
+      `;
+      row.querySelector('.wl-remove').addEventListener('click', () => {
+        const idx = findWishlistIndex(item.name);
+        if(idx > -1) wishlist.splice(idx, 1);
+        renderWishlist();
+        // also un-fill the heart on the card if it's visible on the page
+        document.querySelectorAll('.product-card').forEach(card => {
+          if(card.dataset.name === item.name){
+            const btn = card.querySelector('.pc-wishlist');
+            btn.classList.remove('active');
+            btn.querySelector('i').classList.remove('bi-heart-fill');
+            btn.querySelector('i').classList.add('bi-heart');
+          }
+        });
+      });
+      wrap.appendChild(row);
+    });
+  }
+}
+
+function clearWishlist(){
+  wishlist = [];
+  document.querySelectorAll('.pc-wishlist.active').forEach(btn => {
+    btn.classList.remove('active');
+    btn.querySelector('i').classList.remove('bi-heart-fill');
+    btn.querySelector('i').classList.add('bi-heart');
+  });
+  renderWishlist();
+}
+
+function enquireWishlistOnWhatsApp(){
+  if(wishlist.length === 0) return;
+  let text = "Hello Blue Star, I'd like pricing on the following items:\n";
+  wishlist.forEach((item, i) => { text += `${i + 1}. ${item.name} (${item.brand})\n`; });
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+// ===================================================================
+// QUICK VIEW MODAL
+// ===================================================================
+let currentQVProduct = null;
+let currentQVCard = null;
+const qvModalEl = document.getElementById('quickViewModal');
+const qvModal = new bootstrap.Modal(qvModalEl);
+
+function openQuickView(cardEl){
+  if(!cardEl) return;
+  currentQVCard = cardEl;
+  currentQVProduct = {
+    name: cardEl.dataset.name,
+    brand: cardEl.dataset.brand,
+    spec: cardEl.dataset.spec,
+    img: cardEl.dataset.img
+  };
+
+  document.getElementById('qvImg').src = currentQVProduct.img;
+  document.getElementById('qvImg').alt = currentQVProduct.name;
+  document.getElementById('qvBrand').textContent = currentQVProduct.brand;
+  document.getElementById('qvName').textContent = currentQVProduct.name;
+  document.getElementById('qvSpec').textContent = currentQVProduct.spec;
+  document.getElementById('qvQty').value = 1;
+
+  document.getElementById('qvAskPrice').onclick = () => askPrice(currentQVProduct.name);
+  syncQvWishlistButton();
+
+  qvModal.show();
+}
+
+function qvChangeQty(delta){
+  const input = document.getElementById('qvQty');
+  let val = parseInt(input.value, 10) || 1;
+  val = Math.max(1, val + delta);
+  input.value = val;
+}
+
+// ===================================================================
+// BOTTOM STICKY PROMO BAR
+// ===================================================================
+(function initPromoBar(){
+  const bar = document.getElementById('promoBar');
+  let dismissed = false;
+
+  window.dismissPromoBar = function(){
+    dismissed = true;
+    bar.classList.remove('is-visible');
+  };
+
+  window.addEventListener('scroll', () => {
+    if(dismissed) return;
+    if(window.scrollY > 500){
+      bar.classList.add('is-visible');
+    } else {
+      bar.classList.remove('is-visible');
+    }
+  }, { passive: true });
+})();
+
+// quick quote form -> whatsapp
+document.getElementById('quoteForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('qName').value;
+  const company = document.getElementById('qCompany').value;
+  const mobile = document.getElementById('qMobile').value;
+  const product = document.getElementById('qProduct').value;
+  const qty = document.getElementById('qQty').value;
+  const message = document.getElementById('qMessage').value;
+  const file = document.getElementById('qFile').files[0];
+
+  let text = `Quote Request - Blue Star Website\n`;
+  text += `Name: ${name}\n`;
+  if(company) text += `Company: ${company}\n`;
+  text += `Mobile/WhatsApp: ${mobile}\n`;
+  text += `Product Required: ${product}\n`;
+  if(qty) text += `Quantity: ${qty}\n`;
+  if(message) text += `Message: ${message}\n`;
+  if(file) text += `(Photo attached separately — please check the chat)\n`;
+
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+  this.reset();
+});
+</script>
+</body>
+</html>
