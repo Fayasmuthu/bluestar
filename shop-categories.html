@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop By Categories</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#1F2933;
+  --muted:#767E88;
+  --line:#E7E7E7;
+  --bg:#FFFFFF;
+  --accent:#4FBDBA;
+  --accent-dark:#379E9B;
+}
+*{box-sizing:border-box;}
+body{font-family:'Inter',sans-serif; color:var(--ink); background:var(--bg); margin:0;}
+h1,h2,.font-display{font-family:'Manrope',sans-serif; letter-spacing:-0.01em;}
+.container-xl{max-width:1320px;}
+
+.cat-section{padding:3.4rem 0;}
+.cat-head{display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.9rem;}
+.cat-title{font-size:clamp(1.4rem,2.4vw,1.9rem); font-weight:800; margin:0; color:var(--ink);}
+
+.cat-arrows{display:flex; gap:.6rem;}
+.cat-arrow{
+  width:38px; height:38px; border-radius:9px; border:1.5px solid var(--line); background:#fff;
+  display:flex; align-items:center; justify-content:center; color:var(--accent-dark); transition:.2s ease; cursor:pointer;
+}
+.cat-arrow:hover{background:var(--accent); border-color:var(--accent); color:#fff;}
+
+/* ---- carousel shell ---- */
+.cat-carousel .carousel-inner{overflow:visible;}
+.cat-carousel .carousel-item{padding-bottom:.4rem;}
+
+.cat-indicators{position:static; margin-top:1.6rem; gap:6px;}
+.cat-indicators [data-bs-target]{
+  width:6px; height:6px; border-radius:50%; background:var(--line); opacity:1; border:none;
+  transition:.2s ease; text-indent:0;
+}
+.cat-indicators .active{background:var(--accent-dark); width:18px; border-radius:4px;}
+
+/* ---- card ---- */
+.cat-card{
+  display:flex; flex-direction:column; align-items:center; text-align:center; text-decoration:none; color:var(--ink);
+  gap:.9rem; padding:.3rem;
+}
+.cat-card:hover{color:var(--ink);}
+.cat-blob{
+  width:100%; max-width:170px; aspect-ratio:4/3.1; display:flex; align-items:center; justify-content:center;
+  overflow:hidden; border-radius:48% 52% 54% 46% / 50% 45% 55% 50%; transition:transform .3s ease, border-radius .3s ease;
+}
+.cat-card:hover .cat-blob{transform:translateY(-5px); border-radius:44% 56% 46% 54% / 55% 50% 50% 45%;}
+.cat-blob img{width:78%; height:78%; object-fit:contain; filter:drop-shadow(0 10px 14px rgba(0,0,0,.14));}
+.cat-name{font-weight:700; font-size:.98rem; line-height:1.3;}
+
+/* pastel blob backgrounds, cycling */
+.blob-1{background:#FCEFC7;} .blob-2{background:#FDE2E4;} .blob-3{background:#F3E8FF;}
+.blob-4{background:#E3F2E1;} .blob-5{background:#FFF1D6;} .blob-6{background:#E7F0FD;}
+.blob-7{background:#FDEDEA;} .blob-8{background:#EAF7F1;}
+
+.cat-hint{display:none; font-size:.78rem; color:var(--muted); align-items:center; justify-content:center; gap:6px; margin-top:.6rem;}
+@media (max-width:767.98px){ .cat-hint{display:flex;} .cat-arrows{display:none;} }
+</style>
+</head>
+<body>
+
+<section class="cat-section">
+  <div class="container container-xl">
+
+    <div class="cat-head">
+      <h2 class="cat-title">Shop By Categories</h2>
+      <div class="cat-arrows">
+        <button class="cat-arrow" id="catPrev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+        <button class="cat-arrow" id="catNext" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <div class="cat-carousel">
+      <div id="categoryCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-touch="true">
+        <div class="carousel-indicators cat-indicators" id="catIndicators"></div>
+        <div class="carousel-inner" id="catInner"></div>
+      </div>
+    </div>
+
+    <div class="cat-hint"><i class="bi bi-arrow-left-right"></i> Swipe to see more</div>
+
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function(){
+  const categories = [
+    { name: "Hand Tool",             img: "https://images.unsplash.com/photo-1581147036324-c1c89c2c8e93?q=80&w=300&auto=format&fit=crop", blob: "blob-1" },
+    { name: "Power Tool",            img: "https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=300&auto=format&fit=crop", blob: "blob-2" },
+    { name: "Electric",              img: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=300&auto=format&fit=crop", blob: "blob-3" },
+    { name: "Home Decor",            img: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=300&auto=format&fit=crop", blob: "blob-4" },
+    { name: "Home Appliance",        img: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?q=80&w=300&auto=format&fit=crop", blob: "blob-5" },
+    { name: "Silicone",              img: "https://images.unsplash.com/photo-1621905252472-943c48e9a3ff?q=80&w=300&auto=format&fit=crop", blob: "blob-6" },
+    { name: "Painting",              img: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=300&auto=format&fit=crop", blob: "blob-7" },
+    { name: "Cable",                 img: "https://images.unsplash.com/photo-1558575583-de6f2c6c5d3e?q=80&w=300&auto=format&fit=crop", blob: "blob-8" },
+    { name: "Small Appliance",       img: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=300&auto=format&fit=crop", blob: "blob-1" },
+    { name: "Large Appliance",       img: "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?q=80&w=300&auto=format&fit=crop", blob: "blob-2" },
+    { name: "Hardware Accessories",  img: "https://images.unsplash.com/photo-1591588582259-e5f27a5d5b0c?q=80&w=300&auto=format&fit=crop", blob: "blob-3" },
+    { name: "Plumbing & Sanitary",   img: "https://images.unsplash.com/photo-1607472829122-983f30c9d3a2?q=80&w=300&auto=format&fit=crop", blob: "blob-4" },
+    { name: "Lighting",              img: "https://images.unsplash.com/photo-1565636291023-51d47a3a7c39?q=80&w=300&auto=format&fit=crop", blob: "blob-5" },
+    { name: "Other",                 img: "https://images.unsplash.com/photo-1567789884554-0b844b597180?q=80&w=300&auto=format&fit=crop", blob: "blob-6" }
+  ];
+
+  function cardHTML(c){
+    return `
+      <a href="#" class="cat-card">
+        <div class="cat-blob ${c.blob}"><img src="${c.img}" alt="${c.name}" loading="lazy"></div>
+        <div class="cat-name">${c.name}</div>
+      </a>`;
+  }
+
+  function itemsPerSlide(){
+    const w = window.innerWidth;
+    if(w >= 1200) return 7;
+    if(w >= 992) return 5;
+    if(w >= 576) return 3;
+    return 2;
+  }
+
+  let currentPerSlide = null;
+  let bsCarousel = null;
+
+  function buildCarousel(){
+    const perSlide = itemsPerSlide();
+    if(perSlide === currentPerSlide) return;
+    currentPerSlide = perSlide;
+
+    const inner = document.getElementById('catInner');
+    const indicators = document.getElementById('catIndicators');
+    inner.innerHTML = '';
+    indicators.innerHTML = '';
+
+    const colClass = 'col-' + Math.floor(12 / perSlide);
+    const slideCount = Math.ceil(categories.length / perSlide);
+
+    for(let s = 0; s < slideCount; s++){
+      const slice = categories.slice(s * perSlide, s * perSlide + perSlide);
+      const cards = slice.map(c => `<div class="${colClass}">${cardHTML(c)}</div>`).join('');
+
+      const item = document.createElement('div');
+      item.className = 'carousel-item' + (s === 0 ? ' active' : '');
+      item.innerHTML = `<div class="row g-3 g-lg-4">${cards}</div>`;
+      inner.appendChild(item);
+
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('data-bs-target', '#categoryCarousel');
+      dot.setAttribute('data-bs-slide-to', s);
+      if(s === 0){ dot.className = 'active'; dot.setAttribute('aria-current', 'true'); }
+      indicators.appendChild(dot);
+    }
+
+    const el = document.getElementById('categoryCarousel');
+    if(bsCarousel) bsCarousel.dispose();
+    bsCarousel = new bootstrap.Carousel(el, { interval: 4000, touch: true, ride: 'carousel' });
+  }
+
+  buildCarousel();
+
+  document.getElementById('catPrev').addEventListener('click', () => bsCarousel && bsCarousel.prev());
+  document.getElementById('catNext').addEventListener('click', () => bsCarousel && bsCarousel.next());
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(buildCarousel, 200);
+  });
+})();
+</script>
+</body>
+</html>
